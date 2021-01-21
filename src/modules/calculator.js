@@ -8,14 +8,14 @@ const calculator = () => {
     const data = {
         'mozaika': {
             '1': 1999,
-            '6': 2500,
-            '9': 9999,
-            '12': 19999,
+            '6': 9900,
+            '9': 13900,
+            '12': 19900,
         },
         'schelkovo': {
             '1': 2999,
-            '6': 4999,
-            '9': 9999,
+            '6': 14999,
+            '9': 21990,
             '12': 24999,
         }
     };
@@ -30,15 +30,6 @@ const calculator = () => {
             } else if (elem.checked && name === 'clubs') {
 
                 clubSelected = elem.value;
-            }
-        });
-    }
-
-    function getCost(data, time) {
-        data.forEach(input => {
-
-            if (input.value === time) {
-                console.log(input.nextElementSibling.querySelector('.cost').firstChild.textContent);
             }
         });
     }

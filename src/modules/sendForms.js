@@ -3,18 +3,18 @@
 const sendForms = () => {
     const errorMessage = 'Что-то пошло не так...',
         loadMessage = 'В процессе загрузки...',
-        successMessage = 'Спасибо! Мы скоро с вами свяжемся!',
         statusMessage = document.createElement('div');
 
     const forms = document.querySelectorAll('form');
- 
-    const addStyle = () => {
+
+    const addStyle = (textColor) => {
+        
         const style = document.createElement('style');
         style.id = 'styleMessage';
         style.textContent = `
                 .glo-style__textmessage {
                 margin: 15px 0px 0px;
-                color: black;
+                color: ${textColor};
                 }
             `;
         document.head.appendChild(style);
@@ -36,6 +36,7 @@ const sendForms = () => {
                 }
                 document.getElementById('callback_form').style.display = 'none';
                 document.getElementById('thanks').style.display = 'block';
+                document.getElementById('price-total').textContent = '1999';
 
                 setTimeout(() => document.getElementById('thanks').style.display = 'none', 5000);
             })
@@ -51,7 +52,13 @@ const sendForms = () => {
             e.preventDefault();
             form.appendChild(statusMessage);
             statusMessage.innerHTML = loadMessage;
-            addStyle();
+
+            if (form.matches('#card_order')) {
+                addStyle('black');
+            } else {
+                addStyle('white');
+            }
+            
             statusMessage.classList.add('glo-style__textmessage');
             const formData = new FormData(form);
 

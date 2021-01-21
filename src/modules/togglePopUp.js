@@ -8,7 +8,7 @@ const togglePopUp = () => {
     headerMain.addEventListener('click', (e) => {
         const target = e.target;
 
-        if (target.matches('img')) {
+        if (target.matches('.menu-button img')) {
             popupMenu.style.display = 'flex';
         }
         if (target.matches('img.close-btn, .popup-menu, a')) {

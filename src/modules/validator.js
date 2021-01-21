@@ -76,9 +76,14 @@ const validator = () => {
 
                 target.value = target.value.replace(/[a-z]+/ig, '');
             }
-            if (target.parentElement.matches('.input-text') && target.matches('[name=name]')) {
+            if (target.matches('[name=name]')) {
 
                 target.value = target.value.replace(/[^\W\s]+|[!-@]/ig, '');
+
+//                 if (target.value.length < 3) {
+// e.target.closest('form').querySelector('.btn');
+//                 }
+
             }
         });
     });
