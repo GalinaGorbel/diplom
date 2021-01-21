@@ -3,10 +3,15 @@
 const sendForms = () => {
     const errorMessage = 'Что-то пошло не так...',
         loadMessage = 'В процессе загрузки...',
-        statusMessage = document.createElement('div');
+        statusMessage = document.createElement('div'),
+        inputs = document.querySelectorAll('[name="card-type"]');
+
+    inputs.forEach(input => {
+        input.value = input.nextElementSibling.querySelectorAll('.cost')[0].firstChild.textContent;
+    });
 
     const forms = document.querySelectorAll('form');
-
+    
     const addStyle = (textColor) => {
         
         const style = document.createElement('style');
@@ -48,7 +53,7 @@ const sendForms = () => {
 
     forms.forEach((form) => {
         form.addEventListener('submit', (e) => {
-
+            console.log(form);
             e.preventDefault();
             form.appendChild(statusMessage);
             statusMessage.innerHTML = loadMessage;
@@ -65,6 +70,7 @@ const sendForms = () => {
             let body = {};
 
             formData.forEach((val, key) => {
+                console.log(val);
                 body[key] = val;
             });
 

@@ -6,7 +6,8 @@ import modalWindow from './modalWindow';
 const validator = () => {
     const inputsValid = document.querySelectorAll('input'),
         buttons = document.querySelectorAll('button[type = submit]');
-    let clone = document.getElementById('thanks').cloneNode(true);
+    let clone = document.getElementById('thanks').cloneNode(true),
+        statusMessage = document.createElement('div');
 
     const addModalAfter = (text) => { //добавляем модальное окно для сообщения
 
@@ -29,13 +30,15 @@ const validator = () => {
         return check;
     };
 
+
     buttons.forEach(button => {
         button.addEventListener('click', (e) => {
-            button.disabled = false;
-            const target = e.target,
-                form = target.closest('form');
 
-            function noChecked() {
+            const target = e.target,
+                form = target.closest('form'),
+                inputs = form.querySelectorAll('input');
+
+            function noChecked() { //функция для вывода сообщения
 
                 const messageAfter = document.getElementById('messageAfter');
 
@@ -47,27 +50,52 @@ const validator = () => {
                 }, 3000);
             }
 
+            function blocked(mess) {
+                addModalAfter(mess);
+                button.disabled = true;
+                noChecked();
+            }
+
+            const inputText = (data) => { //проверка заполнения имени и телефона
+
+                data.forEach(input => {
+                    if (input.matches('[name=name]') && input.value.length < 2) {
+
+                        blocked('Имя должно содержать не менее 2 символов!');
+                    }
+                    if (input.matches('[type=tel]') && input.value.length < 14) {
+   
+                        blocked('Поле телефон должно содержать не менее 11 цифр!');
+                    }
+                });
+
+                
+            };
+        
+            if (inputs) {
+                inputText(inputs);
+            }
             if (form.matches('#footer_form')) {
                 const radios = form.querySelectorAll('[type=radio]');
 
                 if (!checkRadio(radios)) { //проверка радио кнопок
-                    button.disabled = true;
-                    addModalAfter('Необходимо выбрать клуб!');
-                    noChecked();
+        
+                    blocked('Необходимо выбрать клуб!');
                 }
-            } else {
+            }
+            else if (form.matches('#footer_form, #banner-form, #card_order, #form1')) {
                 const checkbox = form.querySelector('[type=checkbox]');
 
                 if (!checkbox.checked) {
-                    button.disabled = true;
-                    addModalAfter('Необходимо подтвердить согласие');
-                    noChecked();
+
+                    blocked('Необходимо подтвердить согласие');
                 }
-            }
+            } 
         });
     });
 
-    inputsValid.forEach(input => {
+    //валидация инпутов
+    inputsValid.forEach(input => { //добавляем валидацию
         input.addEventListener('input', (e) => {
 
             const target = e.target;
@@ -79,10 +107,6 @@ const validator = () => {
             if (target.matches('[name=name]')) {
 
                 target.value = target.value.replace(/[^\W\s]+|[!-@]/ig, '');
-
-//                 if (target.value.length < 3) {
-// e.target.closest('form').querySelector('.btn');
-//                 }
 
             }
         });
