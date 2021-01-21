@@ -15,7 +15,7 @@ self["webpackHotUpdatelendos"]("main",{
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => __WEBPACK_DEFAULT_EXPORT__\n/* harmony export */ });\n\n\nvar togglePopUp = function togglePopUp() {\n  var popupMenu = document.querySelector('.popup-menu'),\n      headerMain = document.querySelector('.header-main');\n  headerMain.addEventListener('click', function (e) {\n    var target = e.target;\n\n    if (target.matches('.menu-button img')) {\n      popupMenu.style.display = 'flex';\n    }\n\n    if (target.matches('img.close-btn, .popup-menu, a')) {\n      popupMenu.style.display = 'none';\n    }\n  });\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (togglePopUp);\n\n//# sourceURL=webpack://lendos/./src/modules/togglePopUp.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => __WEBPACK_DEFAULT_EXPORT__\n/* harmony export */ });\n\n\nvar togglePopUp = function togglePopUp() {\n  var popupMenu = document.querySelector('.popup-menu'),\n      headerMain = document.querySelector('.header-main');\n  headerMain.addEventListener('click', function (e) {\n    var target = e.target;\n\n    if (target.matches('.menu-button img')) {\n      popupMenu.style.display = 'flex';\n    }\n\n    if (target.matches('img.close-btn, .popup-menu, a, .close-menu-btn img')) {\n      popupMenu.style.display = 'none';\n    }\n  });\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (togglePopUp);\n\n//# sourceURL=webpack://lendos/./src/modules/togglePopUp.js?");
 
 /***/ })
 
@@ -25,7 +25,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => "93fe22746fb354519aab"
+/******/ 		__webpack_require__.h = () => "409309e9100009845ac6"
 /******/ 	})();
 /******/ 	
 /******/ }

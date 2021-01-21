@@ -11,7 +11,7 @@ const togglePopUp = () => {
         if (target.matches('.menu-button img')) {
             popupMenu.style.display = 'flex';
         }
-        if (target.matches('img.close-btn, .popup-menu, a')) {
+        if (target.matches('img.close-btn, .popup-menu, a, .close-menu-btn img')) {
             popupMenu.style.display = 'none';
         }
     });

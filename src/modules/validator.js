@@ -6,8 +6,7 @@ import modalWindow from './modalWindow';
 const validator = () => {
     const inputsValid = document.querySelectorAll('input'),
         buttons = document.querySelectorAll('button[type = submit]');
-    let clone = document.getElementById('thanks').cloneNode(true),
-        statusMessage = document.createElement('div');
+    let clone = document.getElementById('thanks').cloneNode(true);
 
     const addModalAfter = (text) => { //добавляем модальное окно для сообщения
 
@@ -83,7 +82,7 @@ const validator = () => {
                     blocked('Необходимо выбрать клуб!');
                 }
             }
-            else if (form.matches('#footer_form, #banner-form, #card_order, #form1')) {
+            else if (form.matches('#banner-form, #card_order, #form1, #form2')) {
                 const checkbox = form.querySelector('[type=checkbox]');
 
                 if (!checkbox.checked) {

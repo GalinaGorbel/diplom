@@ -1,10 +1,11 @@
 "use strict";
 
 const sendForms = () => {
+
     const errorMessage = 'Что-то пошло не так...',
         loadMessage = 'В процессе загрузки...',
         statusMessage = document.createElement('div'),
-        inputs = document.querySelectorAll('[name="card-type"]');
+        inputs = document.querySelectorAll('.cards-types > input[name="card-type"]');
 
     inputs.forEach(input => {
         input.value = input.nextElementSibling.querySelectorAll('.cost')[0].firstChild.textContent;
@@ -39,11 +40,11 @@ const sendForms = () => {
                 if (response.status !== 200) {
                     throw new Error('status network not 200');
                 }
+                document.getElementById('free_visit_form').style.display = 'none';
                 document.getElementById('callback_form').style.display = 'none';
                 document.getElementById('thanks').style.display = 'block';
                 document.getElementById('price-total').textContent = '1999';
 
-                setTimeout(() => document.getElementById('thanks').style.display = 'none', 5000);
             })
             .catch(() => {
 
@@ -53,7 +54,7 @@ const sendForms = () => {
 
     forms.forEach((form) => {
         form.addEventListener('submit', (e) => {
-            console.log(form);
+
             e.preventDefault();
             form.appendChild(statusMessage);
             statusMessage.innerHTML = loadMessage;
@@ -70,13 +71,14 @@ const sendForms = () => {
             let body = {};
 
             formData.forEach((val, key) => {
-                console.log(val);
+    
                 body[key] = val;
             });
 
             postData('./server.php', body);
 
             form.reset();
+            setTimeout(() => document.getElementById('thanks').style.display = 'none', 5000);
             setTimeout(() => statusMessage.remove(), 5000);
 
         });

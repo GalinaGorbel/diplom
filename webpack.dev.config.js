@@ -1,4 +1,5 @@
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -6,10 +7,13 @@ module.exports = {
         filename: 'dev-bundle.js',
         path: path.resolve(__dirname, './dist')
     },
+    plugins: [
+        new CleanWebpackPlugin(),
+    ],
     mode: 'development',
     devServer: {
         open: true,
-        port: 8080,
+        port: 8081,
         hot: true,
         writeToDisk: true,
     },
